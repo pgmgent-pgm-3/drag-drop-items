@@ -82,7 +82,7 @@ const app = {
         const newIndex = this.orderIDs.indexOf($stepLi.id);
 
         // place this step before or after
-        if (currentIndex < newIndex) {
+        if (currentIndex <= newIndex) {
           this.orderIDs.splice(newIndex + 1, 0, $currentLi.id);
         } else {
           this.orderIDs.splice(newIndex, 0, $currentLi.id);
