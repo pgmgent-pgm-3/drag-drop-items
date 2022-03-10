@@ -12,6 +12,40 @@ const splash = {
   initDragAndDrop() {
     const dragEl = this.$pokeball;
     const dropEl = this.$pikachu;
+
+    // init draggable attribute
+    dragEl.draggable = true;
+
+    // when dragging starts, pikachu is happy
+    dragEl.ondragstart = (e) => {
+      dropEl.classList.add("jump");
+    };
+
+    // when dragging stops, pikachu stops jumping
+    dragEl.ondragend = (e) => {
+      dropEl.classList.remove("jump");
+      dropEl.classList.remove("catch");
+    };
+
+    // draggable element above droppable element
+    dropEl.ondragenter = (e) => {
+      dropEl.classList.add("catch");
+    };
+
+    // draggable element not above droppable element
+    dropEl.ondragleave = (e) => {
+      dropEl.classList.remove("catch");
+    };
+
+    // make drop element valid by disabling std behaviour
+    dropEl.ondragover = (e) => {
+      e.preventDefault();
+    };
+
+    dropEl.ondrop = (e) => {
+      dropEl.classList.add("captured");
+      this.exitGame();
+    };
   },
   exitGame() {
     this.$splash.classList.add("hidden");
