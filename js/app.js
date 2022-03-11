@@ -42,6 +42,7 @@ const app = {
       // start dragging
       $stepLi.ondragstart = (e) => {
         $currentLi = $stepLi;
+        e.dataTranser.dropEffect = "move";
         this.$allStepsLi.forEach((i) => {
           if (i != $currentLi) {
             i.classList.add("hint");
