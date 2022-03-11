@@ -19,6 +19,8 @@ const splash = {
     // when dragging starts, pikachu is happy
     dragEl.ondragstart = (e) => {
       dropEl.classList.add("jump");
+      e.dataTransfer.effectAllowed = "link";
+      e.dataTransfer.setData("text/plain", "Gotta catch 'm all");
     };
 
     // when dragging stops, pikachu stops jumping
@@ -44,6 +46,7 @@ const splash = {
 
     dropEl.ondrop = (e) => {
       dropEl.classList.add("captured");
+      alert(e.dataTransfer.getData("text/plain"));
       this.exitGame();
     };
   },
