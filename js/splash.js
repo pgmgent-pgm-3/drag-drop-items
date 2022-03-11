@@ -19,7 +19,6 @@ const splash = {
     // when dragging starts, pikachu is happy
     dragEl.ondragstart = (e) => {
       dropEl.classList.add("jump");
-      e.dataTransfer.effectAllowed = "link";
     };
 
     // when dragging stops, pikachu stops jumping
